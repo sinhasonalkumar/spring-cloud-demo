@@ -1,0 +1,30 @@
+spring:  
+  application:
+    name: zuul-proxy
+
+
+zuul :
+  routes :
+      coreservice : /core/**
+      notificationservice : /notification/**
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 10000
+      
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.103:8761/eureka/,http://192.168.0.103:8762/eureka/
+  instance:
+    preferIpAddress: true
+
+
+server :
+    port: 8080
+    
